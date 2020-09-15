@@ -1,13 +1,19 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from '../src/Navbar';
-
+import Authentication from "./Components/Authentication/Authentication"
 
 function App() {
   return (
-    <div className="App">
-    <Navbar/>
-      
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Route exact path="/" component={Authentication} />
+
+
+      </div>
+    </Router>
+
   );
 }
 export default App;
