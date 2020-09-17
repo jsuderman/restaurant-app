@@ -7,6 +7,12 @@ import AboutComponent from "./Components/about";
 import FooterComponent from "./Components/footer";
 
 function App() {
+
+  // <Router>
+  // <div className="App">
+  //   <Navbar />
+  //   <Route exact path="/" component={Authentication} />
+  //   <Route exact path="/reservations" component={Reservations} /></div>
   return (
     <div className='App'>
       <NavbarComponent />
@@ -20,3 +26,5 @@ function App() {
 }
 
 export default App;
+
+
