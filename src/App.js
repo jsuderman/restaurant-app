@@ -13,6 +13,15 @@ function App() {
         <Route exact path="/reservations" component={Reservations} />
 
       </div>
+      <div className='App'>
+      <NavbarComponent />
+      <HeaderComponent />
+      <DetailComponent />
+      <IconComponent />
+      <AboutComponent />
+      <FooterComponent />
+    </div>
+
     </Router>
 
   );
