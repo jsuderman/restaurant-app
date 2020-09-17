@@ -4,7 +4,9 @@ import HeaderComponent from "./Components/header";
 import DetailComponent from "./Components/detail";
 import IconComponent from "./Components/icon";
 import AboutComponent from "./Components/about";
-import FooterComponent from "./Components/footer";
+import FooterComponent from "./Components/footer";'
+import Authentication from "./Components/Authentication/Authentication";
+import Reservations from "./Components/Pages/Reservation"
 
 function App() {
   return (
