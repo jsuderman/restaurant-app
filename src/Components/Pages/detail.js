@@ -1,5 +1,5 @@
 import React from "react";
-import Detail from "../asset/detail.png";
+// import Detail from "../asset/bg.png";
 
 export default function DetailComponent() {
   return (

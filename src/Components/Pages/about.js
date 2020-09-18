@@ -1,8 +1,8 @@
 import React from "react";
-import One from "../asset/one.png";
-import Two from "../asset/two.png";
-import Three from "../asset/three.png";
-import Four from "../asset/four.png";
+import One from "./asset/one.png";
+import Two from "./asset/two.png";
+import Three from "./asset/three.png";
+import Four from "./asset/four.png";
 
 export default function AboutComponent() {
   return (

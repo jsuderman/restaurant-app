@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import bg from "../asset/bg.png";
+import bg from "asset/bg.png";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 export default class HeaderComponent extends Component {

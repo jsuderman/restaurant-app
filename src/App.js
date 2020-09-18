@@ -1,33 +1,18 @@
-<<<<<<< HEAD
 import React from "react";
-import NavbarComponent from "./Components/navbar";
-import HeaderComponent from "./Components/header";
-import DetailComponent from "./Components/detail";
-import IconComponent from "./Components/icon";
-import AboutComponent from "./Components/about";
-import FooterComponent from "./Components/footer";
-
-function App() {
-  return (
-    <div className='App'>
-=======
-import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Navbar from '../src/Navbar';
+import NavbarComponent from "./Components/Pages/navbar";
+import HeaderComponent from "./Components/Pages/header";
+import DetailComponent from "./Components/Pages/detail";
+import IconComponent from "./Components/Pages/icon";
+import AboutComponent from "./Components/Pages/about";
+import FooterComponent from "./Components/Pages/footer";
 import Authentication from "./Components/Authentication/Authentication";
-import Reservations from "./Components/Pages/Reservation"
+import Reservations from "./Components/Pages/Reservation";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Route exact path="/" component={Authentication} />
-        <Route exact path="/reservations" component={Reservations} />
 
-      </div>
       <div className='App'>
->>>>>>> master
       <NavbarComponent />
       <HeaderComponent />
       <DetailComponent />
@@ -35,8 +20,6 @@ function App() {
       <AboutComponent />
       <FooterComponent />
     </div>
-
-    </Router>
 
   );
 }
