@@ -22,10 +22,7 @@ function Reservation(props) {
     return (
         <div className="reservation">
             <NavbarComponent />
-            <HeaderComponent />
-            <DetailComponent />
-            <IconComponent />
-            <AboutComponent />
+            
             <div>
                 <form>
                     <h5>Name</h5>
@@ -45,10 +42,10 @@ function Reservation(props) {
                             placeholder="How many guest" type="number"
                             onChange={(e) => setReserveGuest(e.target.value)}
                         />
-                        <button className="btn waves-effect waves-light" type="submit" name="action" onClick={props.loginUser}> Set Reservation</button>
+                        <button className="btn waves-effect waves-light" type="submit" name="action"> Set Reservation</button>
                 </form>
             </div>
-                <FooterComponent />
+            
 
                 {/* <div>
                 <TableTotal />

@@ -1,0 +1,27 @@
+.card {
+    width: 400px;
+}
+
+.card-panel {
+    float: right;
+    position: fixed;
+    width: 400px;
+    right: 10px;
+    top: 150px;
+}
+
+#place-order {
+    margin-top: 5px;
+    width: fit-content;
+}
+
+
+.menuItem {
+    height: 300px;
+    width: 300px;
+    
+}
+
+.current {
+    width: fit-content;
+}
