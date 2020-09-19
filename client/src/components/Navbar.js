@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import {Link} from "react-router-dom"
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import "../app.css";
 
 class Navbar extends Component {
   render() {
@@ -7,13 +8,17 @@ class Navbar extends Component {
       <div>
         <div id="background" className="view">
           <div className="full-lg-img">
-            <nav>
+            <nav className="nav-extended">
               <div className="nav-wrapper">
-                <Link to="/user" className="brand-logo">Logo</Link>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                  <li><Link to="/menu">Menu</Link></li>
-                  <li><Link to="/Reservation">Dine-In</Link></li>
-                  <li><Link to="/dineOut">Dine-Out</Link></li>
+                <a href="#" className="brand-logo">ReservatioNow</a>
+                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+              </div>
+              <div className="nav-content">
+                <ul className="tabs tabs-transparent">
+                  <li className="tab"><Link to="/user">Home</Link></li>
+                  <li className="tab"><Link to="/menu">Menu</Link></li>
+                  <li className="tab"><Link to="/reservation">Make Reservation</Link></li>
+                  <li className="tab"><Link to="/dineOut">Dine-Out</Link></li>
                 </ul>
               </div>
             </nav>

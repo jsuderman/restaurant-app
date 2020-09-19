@@ -16,10 +16,7 @@ const DineOut = () => {
 return(
     <div>
         <NavbarComponent />
-            <HeaderComponent />
-            <DetailComponent />
-            <IconComponent />
-            <AboutComponent />
+            
             <div>
                 <form>
                     <h5>Name</h5>
@@ -41,7 +38,7 @@ return(
                         <button className="btn waves-effect waves-light" type="submit" name="action"> Place Order</button>
                 </form>
             </div>
-                <FooterComponent />
+               
 
     </div>
     );

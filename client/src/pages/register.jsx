@@ -31,7 +31,7 @@ function Register (){
 
 return(
     <div>
-        <HeaderComponent/>
+  
 
             <h2>Register</h2>
             <h5>Email</h5>
@@ -69,7 +69,6 @@ return(
 
             <p>Already have an account? Click <Link to="/">here</Link> to Login.</p>
 
-            <FooterComponent/>
 
     </div>
     );
