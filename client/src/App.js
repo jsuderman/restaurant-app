@@ -18,6 +18,7 @@ import Reservation from "./pages/reservation";
 import DineOut from "./pages/dineOut";
 import Register from "./pages/register";
 import Menu from "./pages/menu";
+import Error from "./pages/404";
 
 
 
@@ -82,6 +83,7 @@ switch (name){
           <Route exact path="/menu" component={Menu}/>
           <Route exact path="/reservation" component={Reservation}/>
           <Route exact path="/dineOut" component={DineOut}/>
+          <Route path = "*" component = {Error}/>
         </Switch>
       </Router>
     </div>

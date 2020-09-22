@@ -17,7 +17,7 @@ const dineOutSchema = new Schema({
               required: true
             },
         Order: {
-              type: string,
+              type: Array,
               required: true
             },
         Total: {

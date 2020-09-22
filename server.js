@@ -63,7 +63,7 @@ app.post("/api/login", (req, res, next) => {
                   id: req.user._id
                 });
         
-      });
+      })
     }
   })(req, res, next);
 });
@@ -92,6 +92,7 @@ app.post("/api/register", (req, res) => {
 app.get("/user", (req, res) => {
   res.send(req.user)
 });
+
 
 //--------------------------------------------------End of routes -------------------------------------------
 
