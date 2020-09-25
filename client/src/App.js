@@ -36,7 +36,7 @@ function App() {
  
    const loginUser = (e) => {
      e.preventDefault()
-     console.log("login user clicked")
+     
      let data= {
        Email: loginEmail,
        password: loginPassword

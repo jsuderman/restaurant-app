@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import NavbarComponent from "../components/Navbar";
 import HeaderComponent from "../components/header";
 import DetailComponent from "../components/detail";
@@ -9,59 +9,42 @@ import MenuItems from "../components/MenuItems";
 
 const Menu = () => {
 
-    // const [orderName, setOrderName] = useState("");
-    // const [orderDate, setOrderDate] = useState("");
-    // const [orderTime, setOrderTime] = useState("");
-    // const [orderItems, setOrderItems] = useState("");
-    // const [orderPrice, setOrderPrice] = useState("");
+    
 
-
-    // const registerUser = () => {
-    //     Axios({
-    //       method: "POST",
-    //       url: "/api/placeOrder",
-    //       data: {
-    //         Name: OrderName,
-    //         Date: OrderDate,
-    //         Time: OrderTime,
-    //         Items: OrderItems,
-    //         Price: OrderPrice
-    //       },
-    //       withCredentials: true,
-    //     }).then((res) => console.log(res));
-    //   };
-
+    
+  
 return(
     <div>
         <NavbarComponent/>
         <div class="row">
           <div class="col s12 m5">
             <div class="card-panel ">
-              <table>
-                  <tr id="reciept-header">
-                      <th>Item</th>
-                      <th></th>
-                      <th></th>
-                      <th>Price</th>
-                  </tr>
-                  <tr id="menu-space">
-
-                  </tr>
-                  <tr id="reciept-footer">
-                      <th>Total</th>
-                      <th></th>
-                      <th></th>
-                      <th>Price:</th>
-                  </tr>
+                  <h5>Selected Items</h5>
+                  <div>Order Items go here</div>
                   <div>
                     <button className="btn waves-effect waves-light" id="place-order" type="submit" name="action">Place Order</button>
                   </div>
-              </table>
+              
             </div>
           </div>
         </div>
 
-        <MenuItems/>
+        <div>
+          {/* {menueItems.map(item => {
+            return <ItemComponent item={item} setOrderCardValues={setOrderCardValues}/>
+          })} */}
+
+{/* lets say this code is in the item component:
+onclik, we will create an object {name: 'the item', value: the value}.. both are available in this.props
+setOrderCardValues({}).. which is also available in props */}
+        
+        <h2>Our Menu</h2>
+          <MenuItems />
+
+
+      </div>
+
+        
         <FooterComponent/>
     </div>
     );

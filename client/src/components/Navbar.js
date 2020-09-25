@@ -11,7 +11,7 @@ class Navbar extends Component {
             <nav className="nav-extended">
               <div className="nav-wrapper">
                 <a href="#" className="brand-logo">ReservatioNow</a>
-                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">LogOut</i></a>
               </div>
               <div className="nav-content">
                 <ul className="tabs tabs-transparent">

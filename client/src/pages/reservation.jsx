@@ -46,14 +46,8 @@ function Reservation(props) {
                 </form>
             </div>
             
-
-                {/* <div>
-                <TableTotal />
-            </div>
-            <div>
-                <TableType />
-            </div>
- */}
+            <FooterComponent/>
+                
 
             </div>
     )

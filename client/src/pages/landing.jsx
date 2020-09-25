@@ -12,7 +12,8 @@ const Landing = () => {
 
     return (
         <div>
-            <NavbarComponent />
+            <NavbarComponent/>
+            <HeaderComponent/>
             <h3>Welcome User</h3>
             <div class="row">
                 <div class="col s12 m6">
@@ -41,6 +42,8 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
+            <AboutComponent/>
+            <FooterComponent/>
         </div>
     );
 

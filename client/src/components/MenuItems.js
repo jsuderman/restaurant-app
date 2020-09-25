@@ -1,18 +1,58 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import "../app.css";
+import Menu from "../pages/menu"
 
-class MenuItems extends Component {
-  render() {
+const MenuItems = () => {
+
+  const [cart, setCart] = useState([])
+
+  const [items] = useState([
+    {
+      name: "Menu Item #1",
+      price: "$" + 10.99,
+      image: require("../images/Lamb.jpg")
+    },
+    {
+      name: "Menu Item #2",
+      price: "$" + 10.99,
+      image: require("../images/crab.jpg")
+    },
+    {
+      name: "Menu Item #3",
+      price: "$" + 10.99,
+      image: require("../images/filletMinion.jpg")
+    },
+    {
+      name: "Menu Item #4",
+      price: "$" + 10.99,
+      image: require("../images/Pho.jpg")
+    },
+    {
+      name: "Menu Item #5",
+      price: "$" + 10.99,
+      image: require("../images/food.jpg")
+    },
+    {
+      name: "Menu Item #6",
+      price: "$" + 10.99,
+      image: require("../images/shrimp.jpg")
+    }
+  ]);
+  
+  const addToCart = (item) => {
+    console.log("we are going somewhere")
+    setCart([...cart, item])
+  }
+
     return (
       <div>
-
-
-        <h2>Our Menu</h2>
+        {items.map((item) => 
+        (
         <div className="col s12 m7">
-          <h5 className="header">Menu Item #1</h5>
+          <h5 className="header itemName" name="name">{item.name}</h5>
           <div className="card">
             <div className="card-image">
-              <img className="menuItem" src={require("../images/Lamb.jpg")} alt="menuItem" />
+              <img className="menuItem" src={item.image} alt="menuItem" />
             </div>
             <div className="card-stacked">
               <div className="card-content">
@@ -20,119 +60,19 @@ class MenuItems extends Component {
               </div>
             </div>
             <div className="card-action price" name="price">
-              <h6>$10.00</h6>
+              <h6>{item.price}</h6>
             </div>
             <div className="card-action">
-              <button className="btn waves-effect waves-light" id="place-order" type="submit" name="action">Add to Cart</button>
+              <button className="btn waves-effect waves-light add-to-cart" type="submit" name="action" onClick={() => addToCart(item)}>Add to Cart</button>
             </div>
           </div>
         </div>
-
-        <div className="col s12 m7">
-          <h5 className="header">Menu Item #2</h5>
-          <div className="card">
-            <div className="card-image">
-              <img className="menuItem" src={require("../images/crab.jpg")} alt="menuItem" />
-            </div>
-            <div className="card-stacked">
-              <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.</p>
-              </div>
-            </div>
-            <div className="card-action price" name="price">
-              <h6>$10.00</h6>
-            </div>
-            <div className="card-action">
-              <button className="btn waves-effect waves-light" id="place-order" type="submit" name="action">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="col s12 m7">
-          <h5 className="header">Menu Item #3</h5>
-          <div className="card">
-            <div className="card-image">
-              <img className="menuItem" src={require("../images/filletMinion.jpg")} alt="menuItem" />
-            </div>
-            <div className="card-stacked">
-              <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.</p>
-              </div>
-            </div>
-            <div className="card-action price" name="price">
-              <h6>$10.00</h6>
-            </div>
-            <div className="card-action">
-              <button className="btn waves-effect waves-light" id="place-order" type="submit" name="action">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="col s12 m7">
-          <h5 className="header">Menu Item #4</h5>
-          <div className="card">
-            <div className="card-image">
-              <img className="menuItem" src={require("../images/Pho.jpg")} alt="menuItem" />
-            </div>
-            <div className="card-stacked">
-              <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.</p>
-              </div>
-            </div>
-            <div className="card-action price" name="price">
-              <h6>$10.00</h6>
-            </div>
-            <div className="card-action">
-              <button className="btn waves-effect waves-light" id="place-order" type="submit" name="action">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="col s12 m7">
-          <h5 className="header">Menu Item #5</h5>
-          <div className="card">
-            <div className="card-image">
-              <img className="menuItem" src={require("../images/food.jpg")} alt="menuItem" />
-            </div>
-            <div className="card-stacked">
-              <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.</p>
-              </div>
-            </div>
-            <div className="card-action price" name="price">
-              <h6>$10.00</h6>
-            </div>
-            <div className="card-action">
-              <button className="btn waves-effect waves-light" id="place-order" type="submit" name="action">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="col s12 m7">
-          <h5 className="header">Menu Item #6</h5>
-          <div className="card">
-            <div className="card-image">
-              <img className="menuItem" src={require("../images/shrimp.jpg")} alt="menuItem" />
-            </div>
-            <div className="card-stacked">
-              <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.</p>
-              </div>
-            </div>
-            <div className="card-action price" name="price">
-              <h6>$10.00</h6>
-            </div>
-            <div className="card-action">
-              <button className="btn waves-effect waves-light" id="place-order" type="submit" name="action">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-
-
+        )
+)}
       </div>
+      
+        
     )
-  }
 }
 
 export default MenuItems;

@@ -9,7 +9,7 @@ export default function Datepicker() {
         <div>
             <h5>Date</h5>
             <div className="cell"><span className="label primary"></span>
-                <input id="orderName" placeholder="yyyy-mm-dd" type="Datetime-local" onChange={(e) => setOrderDate(e.target.value)} />
+                <input id="orderName" placeholder="yyyy-mm-dd" type="Date" onChange={(e) => setOrderDate(e.target.value)} />
             </div>
 
         </div>
