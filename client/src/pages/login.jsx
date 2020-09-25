@@ -16,7 +16,7 @@ if(props.auth === true){
     <div>
       <div className="jumbotron">
         <div className="container">
-          <h1>Logo</h1>
+          <h1>ReservatioNow</h1>
         </div>
       </div>
 

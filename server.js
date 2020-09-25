@@ -10,6 +10,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const User = require("./models/users");
 const axios = require("axios");
+const Order = require("./models/dineOut");
 
 const app = express();
 
@@ -89,9 +90,32 @@ app.post("/api/register", (req, res) => {
   });
 });
 
-app.get("/user", (req, res) => {
-  res.send(req.user)
+app.post("/api/dineOut", (req, res) => {
+  Order.findOne({ Name: req.body.name}, async (err, doc) => {
+    if (err) throw err;
+    if (doc) res.send("User Already Exists");
+    if (!doc) {
+
+      const newOrder = new Order({
+
+        Name: req.body.Name,
+        Date: req.body.Date,
+        Time: req.body.Time,
+        Order: req.body.Order,
+        Total: req.body.Total
+    });
+
+    console.log(newOrder);
+    console.log("It's Here!")
+
+    await newOrder.save();
+    res.send("Order Placed")
+    }
+  });
 });
+
+
+
 
 //--------------------------------------------------End of routes -------------------------------------------
 

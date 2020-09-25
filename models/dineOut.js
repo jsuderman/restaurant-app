@@ -1,31 +1,31 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+const order = new mongoose.Schema({
 
-const dineOutSchema = new Schema({
         Name: {
               type: String,
               trim: true,
-              required: "Please enter your Full Name"
             },
+
         Date: {
           type: Date,
         },
         
         Time: {
-              type: Number,
+              type: String,
               required: true
             },
-        Order: {
-              type: string,
+
+        Order: 
+            {
+              type: String,
               required: true
             },
+          
         Total: {
               type: Number,
               required: true
             },
 });
 
-const dineOut = mongoose.model("Dine Out", dineOutSchema);
-
-module.exports = dineOut;
+module.exports = mongoose.model("Order", order);
