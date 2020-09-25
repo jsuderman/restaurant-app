@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 const User = require("./models/users");
 const axios = require("axios");
 const Order = require("./models/dineOut");
+const Reservation = require("./models/reservation");
 
 const app = express();
 
@@ -93,7 +94,7 @@ app.post("/api/register", (req, res) => {
 app.post("/api/dineOut", (req, res) => {
   Order.findOne({ Name: req.body.name}, async (err, doc) => {
     if (err) throw err;
-    if (doc) res.send("User Already Exists");
+    if (doc) res.send("Order Already Exists");
     if (!doc) {
 
       const newOrder = new Order({
@@ -105,15 +106,32 @@ app.post("/api/dineOut", (req, res) => {
         Total: req.body.Total
     });
 
-    console.log(newOrder);
-    console.log("It's Here!")
-
     await newOrder.save();
     res.send("Order Placed")
     }
   });
 });
 
+app.post("/api/reservation", (req, res) => {
+  Reservation.findOne({ Name: req.body.name}, async (err, doc) => {
+    if (err) throw err;
+    if (doc) res.send("Rservation Already Exists");
+    if (!doc) {
+
+      const newReservation = new Reservation({
+
+        Name: req.body.Name,
+        Date: req.body.Date,
+        Time: req.body.Time,
+        Seating: req.body.Seating,
+        Occupants: req.body.Occupants
+    });
+
+    await newReservation.save();
+    res.send("Reserve Placed");
+    }
+  });
+});
 
 
 

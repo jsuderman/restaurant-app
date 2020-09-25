@@ -1,30 +1,31 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+const reservation = new mongoose.Schema({
 
-const dineInSchema = new Schema({
         Name: {
               type: String,
-              trim: true,
-              required: "Please enter your Full Name"
+              trim: true
             },
+
         Date: {
           type: Date,
         },
+
         Time: {
-              type: Number,
+              type: String,
               required: true
             },
+
         Seating: {
               type: String,
               required: true
             },
-        Occupants: {
+
+        Occupants: {  
               type: Number,
               required: true
             },
+
 });
 
-const dineIn = mongoose.model("Dine In", dineInSchema);
-
-module.exports = dineIn;
+module.exports = mongoose.model("Reservation", reservation);

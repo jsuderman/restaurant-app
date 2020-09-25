@@ -8,21 +8,41 @@ import FooterComponent from "../components/footer";
 import DatePicker from "../components/Datepicker";
 import TimePicker from "../components/Timepicker"
 import { addDays } from "date-fns";
-// import TableTotal from "../components/TableTotal";
-// import TableType from "../components/TableType";
+import Axios from "axios"
 
 
-function Reservation(props) {
+const Reservation = () => {
 
     const [reserveName, setReserveName] = useState("");
+    const [reserveDate, setReserveDate] = useState("");
+    const [reserveTime, setReserveTime] = useState("");
     const [reserveSeating, setReserveSeating] = useState("");
-    const [reserveGuest, setReserveGuest] = useState("")
+    const [reserveOccupants, setReserveOccupants] = useState("");
+
+
+    const placeReservation = (e) => {
+        e.preventDefault();
+        Axios({
+            method: "POST",
+            url: "/api/reservation",
+            data: {
+              Name: reserveName,
+              Date: reserveDate,
+              Time: reserveTime,
+              Seating: reserveSeating,
+              Occupants: reserveOccupants
+            },
+
+            withCredentials: true,
+          }).then((res) => console.log(res));
+
+        };
 
 
     return (
-        <div className="reservation">
+        <div>
             <NavbarComponent />
-            
+
             <div>
                 <form>
                     <h5>Name</h5>
@@ -30,26 +50,35 @@ function Reservation(props) {
                         placeholder="Name"
                         onChange={(e) => setReserveName(e.target.value)}
                     />
-                        <DatePicker />
-                        <TimePicker/>
+                    <div>
+                        <h5>Date</h5>
+                        <div className="cell"><span className="label primary"></span>
+                            <input id="orderName" placeholder="yyyy-mm-dd" type="Date" onChange={(e) => setReserveDate(e.target.value)} />
+                        </div>
+
+                    </div>
+                    <div>
+                        <h5>Time</h5>
+                        <div className="cell"><span className="label primary"></span>
+                            <input id="orderTime" placeholder="Select Time" type="time" onChange={(e) => setReserveTime(e.target.value)} />
+                        </div>
+
+                    </div>
                     <h5>Seating</h5>
-                        <input  
-                            placeholder="Select your seating preference"
-                            onChange={(e) => setReserveSeating(e.target.value)}
-                        />
+                    <div className="cell"><span className="label primary"></span>
+                        <input id="orderItem" placeholder="Prefered Seating" type="text" onChange={(e) => setReserveSeating(e.target.value)} />
+                    </div>
+
                     <h5>Occupants</h5>
-                        <input
-                            placeholder="How many guest" type="number"
-                            onChange={(e) => setReserveGuest(e.target.value)}
-                        />
-                        <button className="btn waves-effect waves-light" type="submit" name="action"> Set Reservation</button>
+                    <input
+                        placeholder="How many in the party?" type="number"onChange={(e) => setReserveOccupants(e.target.value)}
+                    />
+                    <button className="btn waves-effect waves-light" type="submit" name="action" onClick={placeReservation}> Place Order</button>
                 </form>
             </div>
-            
-            <FooterComponent/>
-                
+            <FooterComponent />
 
-            </div>
+        </div>
     )
 }
 

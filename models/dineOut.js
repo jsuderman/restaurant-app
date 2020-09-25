@@ -4,7 +4,7 @@ const order = new mongoose.Schema({
 
         Name: {
               type: String,
-              trim: true,
+              trim: true
             },
 
         Date: {
