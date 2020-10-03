@@ -1,5 +1,5 @@
 import React,  { useState, useEffect } from 'react';
-
+import PrivateRoute from './PrivateRoute';
 import Axios from "axios";
 
 
@@ -78,10 +78,10 @@ switch (name){
           <Login handleInputChange={handleInputChange} auth={authenticated} loginUser={loginUser} />
           </Route>
           <Route exact path="/register" component={Register}/>
-          <Route exact path="/user" component={Landing}/>
-          <Route exact path="/menu" component={Menu}/>
-          <Route exact path="/reservation" component={Reservation}/>
-          <Route exact path="/dineOut" component={DineOut}/>
+          <PrivateRoute exact path="/user" component={Landing}/>
+          <PrivateRoute exact path="/menu" component={Menu}/>
+          <PrivateRoute exact path="/reservation" component={Reservation}/>
+          <PrivateRoute exact path="/dineOut" component={DineOut}/>
         </Switch>
       </Router>
     </div>
