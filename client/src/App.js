@@ -25,7 +25,7 @@ import Menu from "./pages/menu";
 function App() {
 
   const [authenticated, setAuthenticated] = useState(false);
-  const [user, setUser] = userState(null)
+  const [user, setUser] = useState(null)
 
 
   return (
@@ -33,7 +33,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-          <Login  auth={authenticated} setAuthenticated={setAuthenticated} setUser={setUser}/>
+          <Login  auth={authenticated} setAuthenticated={setAuthenticated} setUser={setUser} user={user}/>
           </Route>
           <Route exact path="/register" component={Register}/>
           <PrivateRoute exact path="/user" component={Landing}/>
