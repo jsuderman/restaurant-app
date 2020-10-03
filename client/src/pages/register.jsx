@@ -20,14 +20,16 @@ function Register (){
           url: "/api/register",
           data: {
             Email: registerEmail,
-            firstName: registerFirstName,
-            lastName: registerLastName,
-            phone: registerPhone,
-            password: registerPassword
+            FirstName: registerFirstName,
+            LastName: registerLastName,
+            Phone: registerPhone,
+            Password: registerPassword
           },
           withCredentials: true,
         }).then((res) => console.log(res));
       };
+
+      
 
 return(
     <div>

@@ -21,53 +21,11 @@ import Menu from "./pages/menu";
 
 
 
+
 function App() {
 
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
-
- 
- useEffect(()=>{
-   if(sessionStorage.getItem("loggedIn")===true){
-     setAuthenticated(true)
-   }
- },[authenticated])
- 
-   const loginUser = (e) => {
-     e.preventDefault()
-     
-     let data= {
-       Email: loginEmail,
-       password: loginPassword
-     }
-     Axios.post("/api/login",data)
-     .then((res) => {
-       console.log(res)
-       if(res.status === 200) {
-         sessionStorage.setItem("loggedIn", true);
-         sessionStorage.setItem("id", res.data.id);
-         setAuthenticated(true);
-       }
-     });
-   };
-
-
-   function handleInputChange(e){
-let name = e.target.name;
-let value = e.target.value
-
-switch (name){
-    case "user":
-    setLoginEmail(value)
-    break;
-    case"password":
-    setLoginPassword(value)
-    break;
-}
-
-
-   }
+  const [user, setUser] = userState(null)
 
 
   return (
@@ -75,7 +33,7 @@ switch (name){
       <Router>
         <Switch>
           <Route exact path="/">
-          <Login handleInputChange={handleInputChange} auth={authenticated} loginUser={loginUser} />
+          <Login  auth={authenticated} setAuthenticated={setAuthenticated} setUser={setUser}/>
           </Route>
           <Route exact path="/register" component={Register}/>
           <PrivateRoute exact path="/user" component={Landing}/>

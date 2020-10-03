@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
+const passportConfig = require("./config/passport");
 const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
@@ -12,6 +13,8 @@ const User = require("./models/users");
 const axios = require("axios");
 const Order = require("./models/dineOut");
 const Reservation = require("./models/reservation");
+
+
 
 const app = express();
 
@@ -48,26 +51,18 @@ app.use(
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-require("./config/passport")(passport);
+
 
 //-------------------------------------------------End of Middleware------------------------------------------------------
 
 
 // Routes
-app.post("/api/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
-    if (!user) res.send("No User Exists");
-    else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        res.send({status: "Successfully Authenticated",
-                  id: req.user._id
-                });
-        
-      });
-    }
-  })(req, res, next);
+app.post("/api/login", passportConfig.authenticate("local"),  (req, res, next) => {
+  res.json({
+    email: req.user.Email,
+    firstName: req.user.FirstName,
+    lastName: req.user.LastName
+  });
 });
 
 
@@ -76,14 +71,14 @@ app.post("/api/register", (req, res) => {
     if (err) throw err;
     if (doc) res.send("User Already Exists");
     if (!doc) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const hashedPassword = await bcrypt.hash(req.body.Password, 10);
 
       const newUser = new User({
         Email: req.body.Email,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        phone: req.body.phone,
-        password: hashedPassword,
+        FirstName: req.body.FirstName,
+        LastName: req.body.LastName,
+        Phone: req.body.Phone,
+        Password: hashedPassword,
       });
       await newUser.save();
       res.send("User Created");
