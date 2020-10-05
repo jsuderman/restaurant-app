@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import NavbarComponent from "../components/Navbar";
-import HeaderComponent from "../components/header";
-import DetailComponent from "../components/detail";
-import IconComponent from "../components/icon";
-import AboutComponent from "../components/about";
 import FooterComponent from "../components/footer";
-import TimePicker from "../components/Timepicker";
-import MenuItems from "../components/MenuItems";
+import {Link} from "react-router-dom";
 import Axios from "axios";
-import Datepicker from "../components/Datepicker";
+
 
 const DineOut = () => {
 
@@ -62,6 +57,7 @@ const DineOut = () => {
 
                     </div>
                     <h5>Order Items</h5>
+                    <p><Link to="/menu">See Menu</Link></p>
                     <div className="cell"><span className="label primary"></span>
                         <input id="orderItem" placeholder="Order Items will go here" type="text" onChange={(e) => setOrderItem(e.target.value)} />
                     </div>

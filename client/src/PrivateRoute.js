@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Redirect} from 'react-router-dom';
-import Axios from "axios";
 import authService from "./authService";
 // import Navbar from "./Navbar";
 

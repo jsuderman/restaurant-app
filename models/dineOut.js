@@ -18,7 +18,7 @@ const order = new mongoose.Schema({
 
         Order: 
             {
-              type: String,
+              type: [String],
               required: true
             },
           
