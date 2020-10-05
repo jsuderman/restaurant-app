@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import NavbarComponent from "../components/Navbar";
-import HeaderComponent from "../components/header";
-import DetailComponent from "../components/detail";
-import IconComponent from "../components/icon";
-import AboutComponent from "../components/about";
 import FooterComponent from "../components/footer";
-import DatePicker from "../components/Datepicker";
-import TimePicker from "../components/Timepicker"
-import { addDays } from "date-fns";
 import Axios from "axios"
 
 
@@ -26,17 +19,17 @@ const Reservation = () => {
             method: "POST",
             url: "/api/reservation",
             data: {
-              Name: reserveName,
-              Date: reserveDate,
-              Time: reserveTime,
-              Seating: reserveSeating,
-              Occupants: reserveOccupants
+                Name: reserveName,
+                Date: reserveDate,
+                Time: reserveTime,
+                Seating: reserveSeating,
+                Occupants: reserveOccupants
             },
 
             withCredentials: true,
-          }).then((res) => console.log(res));
+        }).then((res) => console.log(res));
 
-        };
+    };
 
 
     return (
@@ -65,15 +58,22 @@ const Reservation = () => {
 
                     </div>
                     <h5>Seating</h5>
-                    <div className="cell"><span className="label primary"></span>
-                        <input id="orderItem" placeholder="Prefered Seating" type="text" onChange={(e) => setReserveSeating(e.target.value)} />
-                    </div>
+                    <select className="browser-default" onChange={(e) => setReserveSeating(e.target.value)}>
+                        <option value="" disabled selected>Choose your prefered seating</option>
+                        <option value="Bar">Bar</option>
+                        <option value="Table">Table</option>
+                        <option value="Booth">Booth</option>
+                        <option value="Room">Room</option>
+                    </select>
 
                     <h5>Occupants</h5>
-                    <input
-                        placeholder="How many in the party?" type="number"onChange={(e) => setReserveOccupants(e.target.value)}
-                    />
-                    <button className="btn waves-effect waves-light" type="submit" name="action" onClick={placeReservation}> Place Order</button>
+                    <div>
+                        <input
+                            placeholder="How many in the party?" type="number" onChange={(e) => setReserveOccupants(e.target.value)}
+                        />
+                        <button className="btn waves-effect waves-light" type="submit" name="action" onClick={placeReservation}> Place Order</button>
+                    </div>
+
                 </form>
             </div>
             <FooterComponent />

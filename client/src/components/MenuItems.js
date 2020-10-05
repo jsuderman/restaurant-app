@@ -1,10 +1,7 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import "../app.css";
-import Menu from "../pages/menu"
 
 const MenuItems = () => {
-
-  const [cart, setCart] = useState([])
 
   const [items] = useState([
     {
@@ -38,19 +35,21 @@ const MenuItems = () => {
       image: require("../images/shrimp.jpg")
     }
   ]);
-  
+
+  const [cart, setCart] = useState([]);
+
   const addToCart = (item) => {
-    console.log("we are going somewhere")
-    setCart([...cart, item])
+
+    setCart([...cart, item]);
   }
 
     return (
       <div>
-        {items.map((item) => 
+        {items.map((item, index) => 
         (
         <div className="col s12 m7">
           <h5 className="header itemName" name="name">{item.name}</h5>
-          <div className="card">
+          <div className="card" key="index">
             <div className="card-image">
               <img className="menuItem" src={item.image} alt="menuItem" />
             </div>

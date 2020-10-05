@@ -1,20 +1,15 @@
 import React, {useState} from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
-import HeaderComponent from "../components/header";
-import FooterComponent from "../components/footer";
+import { Link, useHistory } from "react-router-dom";
+
 import Axios from "axios";
 
 //Storage 
 
 function Login (props) {
 
-  console.log(props);
-
   const history = useHistory();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
-  console.log(history)
 
     const loginUser = (e) => {
       e.preventDefault()
@@ -79,6 +74,7 @@ function Login (props) {
 
         <h5>Password</h5>
         <input
+          type="password"
           placeholder="Enter Password"
           onChange={handleInputChange}
           name="password"

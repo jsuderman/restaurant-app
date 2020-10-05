@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {Link} from "react-router-dom";
 import Axios from "axios";
-import HeaderComponent from "../components/header";
-import FooterComponent from "../components/footer";
 
 
 function Register (){
