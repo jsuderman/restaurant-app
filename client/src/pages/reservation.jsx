@@ -40,7 +40,7 @@ const Reservation = () => {
                 <form>
                     <h5>Name</h5>
                     <input
-                        placeholder="Name"
+                        placeholder={sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}
                         onChange={(e) => setReserveName(e.target.value)}
                     />
                     <div>
