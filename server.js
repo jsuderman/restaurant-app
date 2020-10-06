@@ -102,7 +102,7 @@ app.post("/api/dineOut", (req, res) => {
     });
 
     await newOrder.save();
-    res.send("Order Placed")
+    res.send(newOrder)
     }
   });
 });

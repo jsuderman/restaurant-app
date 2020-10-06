@@ -40,6 +40,10 @@ const MenuItems = () => {
 
   const addToCart = (item) => {
 
+    let currentCart = JSON.parse(sessionStorage.getItem("currentCart")) || [];
+      currentCart.push(item)
+      sessionStorage.setItem("currentCart", JSON.stringify(currentCart))
+    console.log("Ive been clicked");
     setCart([...cart, item]);
   }
 

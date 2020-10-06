@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavbarComponent from "../components/Navbar";
 import FooterComponent from "../components/footer";
 import { Link, useHistory } from "react-router-dom";
@@ -10,9 +10,10 @@ const DineOut = () => {
     const history = useHistory();
     const [orderName, setOrderName] = useState("");
     const [orderDate, setOrderDate] = useState("");
-    const [orderTime, setOrderTime] = useState("")
-    const [orderItem, setOrderItem] = useState("")
+    const [orderTime, setOrderTime] = useState("");
+    const [orderItem, setOrderItem] = useState("");
     const [orderTotal, setOrderTotal] = useState("");
+    const [displayOrder, setDisplayOrder] = useState("");
 
 
     const placeOrder = (e) => {
@@ -30,6 +31,8 @@ const DineOut = () => {
             withCredentials: true,
         }).then((res) => {
 
+            console.log(res);
+
             sessionStorage.setItem("name", res.data.Name);
             sessionStorage.setItem("date", res.data.Date);
             sessionStorage.setItem("time", res.data.Time);
@@ -39,53 +42,69 @@ const DineOut = () => {
 
             history.push("/confirmation");
             console.log(res);
+        })
+    };
+
+    useEffect(() => {
+        let orders = JSON.parse(sessionStorage.getItem("currentCart")) || [];
+        let displayOrder = "";
+        let total = 0;
+
+        for (let i = 0; i < orders.length; i++) {
+            total += parseFloat(orders[i].price.substring(1))
+            displayOrder += orders[i].name + " " + orders[i].price + " "
+        }
+        setDisplayOrder(displayOrder);
+        setOrderItem(displayOrder);
+        setOrderTotal(total);
     })
-};
 
 
-return (
-    <div>
-        <NavbarComponent />
-
+    return (
         <div>
-            <form>
-                <h5>Name</h5>
-                <input
-                    placeholder={sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}
-                    onChange={(e) => setOrderName(e.target.value)}
-                />
-                <div>
-                    <h5>Date</h5>
+            <NavbarComponent />
+
+            <div>
+                <form>
+                    <h5>Name</h5>
+                    <input
+                        placeholder={sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}
+                        onChange={(e) => setOrderName(e.target.value)}
+                    />
+                    <div>
+                        <h5>Date</h5>
+                        <div className="cell"><span className="label primary"></span>
+                            <input id="orderName" placeholder="yyyy-mm-dd" type="Date" onChange={(e) => setOrderDate(e.target.value)} />
+                        </div>
+
+                    </div>
+                    <div>
+                        <h5>Time</h5>
+                        <div className="cell"><span className="label primary"></span>
+                            <input id="orderTime" placeholder="Select Time" type="time" onChange={(e) => setOrderTime(e.target.value)} />
+                        </div>
+
+                    </div>
+                    <h5>Order Items</h5>
+                    <p><Link to="/menu">See Menu</Link></p>
                     <div className="cell"><span className="label primary"></span>
-                        <input id="orderName" placeholder="yyyy-mm-dd" type="Date" onChange={(e) => setOrderDate(e.target.value)} />
+                        <input id="orderItem" placeholder="Order Items will go here" type="text" onChange={(e) => setOrderItem(e.target.value)} value={displayOrder} />
+
                     </div>
 
-                </div>
-                <div>
-                    <h5>Time</h5>
-                    <div className="cell"><span className="label primary"></span>
-                        <input id="orderTime" placeholder="Select Time" type="time" onChange={(e) => setOrderTime(e.target.value)} />
-                    </div>
+                    <h5>Total</h5>
+                    <input
+                        placeholder="Price total goes here" type="number"
+                        onChange={(e) => setOrderTotal(e.target.value)}
+                        value = {orderTotal}
+                    />
+                    <button className="btn waves-effect waves-light" type="submit" name="action" onClick={placeOrder}> Place Order</button>
+                </form>
+            </div>
+            <FooterComponent />
 
-                </div>
-                <h5>Order Items</h5>
-                <p><Link to="/menu">See Menu</Link></p>
-                <div className="cell"><span className="label primary"></span>
-                    <input id="orderItem" placeholder="Order Items will go here" type="text" onChange={(e) => setOrderItem(e.target.value)} />
-                </div>
-
-                <h5>Total</h5>
-                <input
-                    placeholder="Price total goes here" type="number"
-                    onChange={(e) => setOrderTotal(e.target.value)}
-                />
-                <button className="btn waves-effect waves-light" type="submit" name="action" onClick={placeOrder}> Place Order</button>
-            </form>
         </div>
-        <FooterComponent />
-
-    </div>
-);
+    );
 
 }
 
