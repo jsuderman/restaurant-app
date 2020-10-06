@@ -9,19 +9,23 @@ import "../app.css";
 
 const Landing = () => {
 
-   
+
 
     return (
         <div>
-            <NavbarComponent/>
-            <HeaderComponent/>
-    <h3>Welcome {sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}</h3>
+            <NavbarComponent />
+            <HeaderComponent />
+            <h3>Welcome {sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}</h3>
             <div className="row">
                 <div className="col s12 m6">
                     <div className="card blue-grey darken-1 current">
                         <div className="card-content white-text">
                             <span className="card-title">Current Reservation</span>
-                            <p>The Last reservation by this user will go here.</p>
+                            <h5>Name: {sessionStorage.getItem("reserveName")}</h5>
+                            <h5>Date: {sessionStorage.getItem("reserveDate")}</h5>
+                            <h5>Time: {sessionStorage.getItem("reserveTime")}</h5>
+                            <h5>Seating: {sessionStorage.getItem("reserveSeating")}</h5>
+                            <h5>Occupants: {sessionStorage.getItem("reserveOccupants")}</h5>
                         </div>
                         <div className="card-action">
 
@@ -35,7 +39,11 @@ const Landing = () => {
                     <div className="card blue-grey darken-1 current">
                         <div className="card-content white-text">
                             <span className="card-title">Current Order</span>
-                            <p>The last order placed by this user will go here</p>
+                            <h5>Name: {sessionStorage.getItem("name")}</h5>
+                            <h5>Date: {sessionStorage.getItem("date")}</h5>
+                            <h5>Time: {sessionStorage.getItem("time")}</h5>
+                            <h5>Order: {sessionStorage.getItem("order")}</h5>
+                            <h5>Total: {sessionStorage.getItem("total")}</h5>
                         </div>
                         <div className="card-action">
 
@@ -43,8 +51,8 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
-            <AboutComponent/>
-            <FooterComponent/>
+            <AboutComponent />
+            <FooterComponent />
         </div>
     );
 

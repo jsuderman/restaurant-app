@@ -123,7 +123,7 @@ app.post("/api/reservation", (req, res) => {
     });
 
     await newReservation.save();
-    res.send("Reserve Placed");
+    res.send(newReservation);
     }
   });
 });

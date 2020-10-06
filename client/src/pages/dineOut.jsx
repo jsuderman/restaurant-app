@@ -54,9 +54,11 @@ const DineOut = () => {
             total += parseFloat(orders[i].price.substring(1))
             displayOrder += orders[i].name + " " + orders[i].price + " "
         }
+
         setDisplayOrder(displayOrder);
         setOrderItem(displayOrder);
         setOrderTotal(total);
+
     })
 
 
@@ -96,7 +98,7 @@ const DineOut = () => {
                     <input
                         placeholder="Price total goes here" type="number"
                         onChange={(e) => setOrderTotal(e.target.value)}
-                        value = {orderTotal}
+                        value={orderTotal}
                     />
                     <button className="btn waves-effect waves-light" type="submit" name="action" onClick={placeOrder}> Place Order</button>
                 </form>

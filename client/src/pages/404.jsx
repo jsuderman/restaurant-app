@@ -1,18 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import NavbarComponent from "../components/Navbar";
-import HeaderComponent from "../components/header";
-import DetailComponent from "../components/detail";
-import IconComponent from "../components/icon";
-import AboutComponent from "../components/about";
-import FooterComponent from "../components/footer";
-import DatePicker from "../components/Datepicker";
-import TimePicker from "../components/Timepicker"
-import { addDays } from "date-fns";
-// import TableTotal from "../components/TableTotal";
-// import TableType from "../components/TableType";
 
 
-function Error(props) {
+function Error() {
 
     return (
         <div className="error">

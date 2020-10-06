@@ -33,10 +33,11 @@ const Reservation = () => {
         }).then((res) => 
         
         {
+            
             sessionStorage.setItem("reserveName", res.data.Name);
             sessionStorage.setItem("reserveDate", res.data.Date);
             sessionStorage.setItem("reserveTime", res.data.Time);
-            sessionStorage.setItem("reservSeatling", res.data.Seating);
+            sessionStorage.setItem("reserveSeating", res.data.Seating);
             sessionStorage.setItem("reserveOccupants", res.data.Occupants);
 
 
