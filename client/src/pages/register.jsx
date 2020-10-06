@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import Axios from "axios";
 
 
 function Register (){
 
+    const history = useHistory();
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerFirstName, setRegisterFirstName] = useState("");
     const [registerLastName, setRegisterLastName] = useState("");
@@ -24,7 +25,17 @@ function Register (){
             Password: registerPassword
           },
           withCredentials: true,
-        }).then((res) => console.log(res));
+        }).then((res, err) => 
+        {
+          if(err) 
+          {
+            console.log(err);
+          } else {
+            history.push("/");
+            console.log(res);
+          }
+
+        }) 
       };
 
       

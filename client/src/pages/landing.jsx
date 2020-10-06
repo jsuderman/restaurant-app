@@ -6,10 +6,10 @@ import FooterComponent from "../components/footer";
 import "../app.css";
 
 
-const Landing = (props) => {
 
-    console.log(sessionStorage)
-    
+const Landing = () => {
+
+   
 
     return (
         <div>
