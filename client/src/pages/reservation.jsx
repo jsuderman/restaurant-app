@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import NavbarComponent from "../components/Navbar";
 import FooterComponent from "../components/footer";
 import Axios from "axios"
+import { useHistory } from "react-router-dom";
 
 
 const Reservation = () => {
 
+
+    const history = useHistory();
     const [reserveName, setReserveName] = useState("");
     const [reserveDate, setReserveDate] = useState("");
     const [reserveTime, setReserveTime] = useState("");
@@ -27,7 +30,19 @@ const Reservation = () => {
             },
 
             withCredentials: true,
-        }).then((res) => console.log(res));
+        }).then((res) => 
+        
+        {
+            sessionStorage.setItem("reserveName", res.data.Name);
+            sessionStorage.setItem("reserveDate", res.data.Date);
+            sessionStorage.setItem("reserveTime", res.data.Time);
+            sessionStorage.setItem("reservSeatling", res.data.Seating);
+            sessionStorage.setItem("reserveOccupants", res.data.Occupants);
+
+
+            history.push("/user");
+            console.log(res);
+        });
 
     };
 

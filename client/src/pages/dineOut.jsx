@@ -37,7 +37,7 @@ const DineOut = () => {
             sessionStorage.setItem("total", res.data.Total);
 
 
-            history.push("/user");
+            history.push("/confirmation");
             console.log(res);
     })
 };
