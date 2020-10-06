@@ -23,12 +23,12 @@ function Login (props) {
       withCredentials: true,
       url: "http://localhost:3001/api/login",
     }).then((res) => {
-      console.log(res)
       if(res.data) {
         sessionStorage.setItem("loggedIn", true);
-        sessionStorage.setItem("id", res.data.id);
+        sessionStorage.setItem("email", res.data.email);
+        sessionStorage.setItem("firstName", res.data.firstName);
+        sessionStorage.setItem("lastName", res.data.lastName);
         sessionStorage.setItem("auth", "true");
-        props.setUser(res.data)
         props.setAuthenticated(true);
         history.push("/user");
       }
@@ -50,9 +50,6 @@ function Login (props) {
       
       
          }
-
-
-
 
   return (
     <div>
