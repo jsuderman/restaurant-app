@@ -17,6 +17,7 @@ import Reservation from "./pages/reservation";
 import DineOut from "./pages/dineOut";
 import Register from "./pages/register";
 import Menu from "./pages/menu";
+import Error from "./pages/404";
 
 
 
@@ -39,6 +40,7 @@ function App() {
           <PrivateRoute exact path="/menu" component={Menu}/>
           <PrivateRoute exact path="/reservation" component={Reservation}/>
           <PrivateRoute exact path="/dineOut" component={DineOut}/>
+          <Route path = "*" component = {Error}/>
         </Switch>
       </Router>
     </div>
