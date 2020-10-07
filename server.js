@@ -13,23 +13,21 @@ const User = require("./models/users");
 const axios = require("axios");
 const Order = require("./models/dineOut");
 const Reservation = require("./models/reservation");
-
-
-
 const app = express();
-
+const PORT = process.env.PORT || 3001
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 //Connecting to mongoose
 mongoose.connect(
-  "mongodb+srv://KJohnson3288:Raichu@cluster0.7zfic.mongodb.net/project-3?retryWrites=true&w=majority",
+  process.env.MONGODB_URI || 'mongodb://localhost/project-3',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  },
-  () => {
-    console.log("Mongoose Is Connected");
+    useCreateIndex: true,
+    useFindAndModify: false
   }
 );
-
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,7 +37,6 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(
   session({
     secret: "secretcode",
@@ -47,32 +44,24 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 //-------------------------------------------------End of Middleware------------------------------------------------------
-
-
 // Routes
-app.post("/api/login", passportConfig.authenticate("local"),  (req, res, next) => {
+app.post("/api/login", passportConfig.authenticate("local"), (req, res, next) => {
   res.json({
     email: req.user.Email,
     firstName: req.user.FirstName,
     lastName: req.user.LastName
   });
 });
-
-
 app.post("/api/register", (req, res) => {
   User.findOne({ Email: req.body.Email }, async (err, doc) => {
     if (err) throw err;
     if (doc) res.send("User Already Exists");
     if (!doc) {
       const hashedPassword = await bcrypt.hash(req.body.Password, 10);
-
       const newUser = new User({
         Email: req.body.Email,
         FirstName: req.body.FirstName,
@@ -85,55 +74,42 @@ app.post("/api/register", (req, res) => {
     }
   });
 });
-
 app.post("/api/dineOut", (req, res) => {
-  Order.findOne({ Name: req.body.name}, async (err, doc) => {
+  Order.findOne({ Name: req.body.name }, async (err, doc) => {
     if (err) throw err;
     if (doc) res.send("Order Already Exists");
     if (!doc) {
-
       const newOrder = new Order({
-
         Name: req.body.Name,
         Date: req.body.Date,
         Time: req.body.Time,
         Order: req.body.Order,
         Total: req.body.Total
-    });
-
-    await newOrder.save();
-    res.send(newOrder)
+      });
+      await newOrder.save();
+      res.send(newOrder)
     }
   });
 });
-
 app.post("/api/reservation", (req, res) => {
-  Reservation.findOne({ Name: req.body.name}, async (err, doc) => {
+  Reservation.findOne({ Name: req.body.name }, async (err, doc) => {
     if (err) throw err;
     if (doc) res.send("Rservation Already Exists");
     if (!doc) {
-
       const newReservation = new Reservation({
-
         Name: req.body.Name,
         Date: req.body.Date,
         Time: req.body.Time,
         Seating: req.body.Seating,
         Occupants: req.body.Occupants
-    });
-
-    await newReservation.save();
-    res.send(newReservation);
+      });
+      await newReservation.save();
+      res.send(newReservation);
     }
   });
 });
-
-
-
 //--------------------------------------------------End of routes -------------------------------------------
-
-
 //Listening 
-app.listen(3001, () => {
-    console.log("Server is running")
+app.listen(PORT, () => {
+  console.log("Server is running")
 })
