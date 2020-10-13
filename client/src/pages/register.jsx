@@ -75,7 +75,7 @@ return(
             onChange= {(e) => setRegisterPassword(e.target.value)}
             />
 
-            <button className="btn waves-effect waves-light" type="submit" name="action" onClick={registerUser}> Submit </button>
+            <button className="btn waves-effect waves-light" type="submit" name="action" onClick={ registerUser }> Submit </button>
 
 
             <p>Already have an account? Click <Link to="/">here</Link> to Login.</p>

@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Axios from "axios";
 import "../app.css";
 
-class Navbar extends Component {
-  render() {
+const Navbar = () => {
+
+  const history = useHistory();
+  
+  function logoutUser() {
+    sessionStorage.clear();
+    history.push("/");
+    }
+
     return (
       <div>
         <div id="background" className="view">
@@ -11,7 +19,7 @@ class Navbar extends Component {
             <nav className="nav-extended">
               <div className="nav-wrapper">
                 <a href="#" className="brand-logo">ReservatioNow</a>
-                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">LogOut</i></a>
+                <a className="waves-effect waves-light btn" id="logOut" onClick={ logoutUser }>LogOut</a>
               </div>
               <div className="nav-content">
                 <ul className="tabs tabs-transparent">
@@ -30,7 +38,7 @@ class Navbar extends Component {
       </div>
     )
   }
-}
+
 
 export default Navbar
 

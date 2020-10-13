@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NavbarComponent from "../components/Navbar";
 import HeaderComponent from "../components/header";
 import AboutComponent from "../components/about";
@@ -8,7 +8,6 @@ import "../app.css";
 
 
 const Landing = () => {
-
 
 
     return (
