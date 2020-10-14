@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import "../app.css";
+import 'materialize-css';
+import { toast } from "materialize-css";
 
 const MenuItems = () => {
 
@@ -43,7 +45,8 @@ const MenuItems = () => {
     let currentCart = JSON.parse(sessionStorage.getItem("currentCart")) || [];
     currentCart.push(item)
     sessionStorage.setItem("currentCart", JSON.stringify(currentCart))
-    alert( "item in cart");
+    
+    toast({html: item.name + " has been added to the order", classes:"teal lighten-2"});
     setCart([...cart, item]);
   }
 

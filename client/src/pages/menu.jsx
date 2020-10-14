@@ -3,6 +3,7 @@ import NavbarComponent from "../components/Navbar";
 import FooterComponent from "../components/footer";
 import MenuItems from "../components/MenuItems";
 
+
 const Menu = () => {
 
 
@@ -14,7 +15,7 @@ const Menu = () => {
 
 
         <h2>Our Menu</h2>
-        <MenuItems />
+        <MenuItems/>
 
 
       </div>

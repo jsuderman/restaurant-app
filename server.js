@@ -48,6 +48,8 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 //-------------------------------------------------End of Middleware------------------------------------------------------
+
+
 // Routes
 app.post("/api/login", passportConfig.authenticate("local"), (req, res, next) => {
   res.json({
@@ -109,6 +111,7 @@ app.post("/api/reservation", (req, res) => {
   });
 });
 //--------------------------------------------------End of routes -------------------------------------------
+
 //Listening 
 app.listen(PORT, () => {
   console.log("Server is running")

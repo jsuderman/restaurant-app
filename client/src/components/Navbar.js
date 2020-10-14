@@ -1,17 +1,24 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link, useHistory } from "react-router-dom";
 import "../app.css";
 
-class Navbar extends Component {
-  render() {
+const Navbar = () => {
+
+  const history = useHistory();
+  
+  function logoutUser() {
+    sessionStorage.clear();
+    history.push("/");
+    }
+
     return (
       <div>
         <div id="background" className="view">
           <div className="full-lg-img">
-            <nav className="nav-extended">
+            <nav className="nav-extended purple darken-4 ">
               <div className="nav-wrapper">
-                <a href="#" className="brand-logo">ReservatioNow</a>
-                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">LogOut</i></a>
+                <a className="brand-logo">ReservatioNow</a>
+                <a href="/" className="waves-effect waves-light btn z-depth-3" id="logOut" onClick={ logoutUser }>LogOut</a>
               </div>
               <div className="nav-content">
                 <ul className="tabs tabs-transparent">
@@ -30,7 +37,7 @@ class Navbar extends Component {
       </div>
     )
   }
-}
+
 
 export default Navbar
 
