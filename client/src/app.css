@@ -3,25 +3,37 @@
 }
 
 .card-panel {
-    float: right;
-    position: fixed;
-    width: 400px;
+    width: 300px;
     right: 10px;
     top: 150px;
+    margin: 10px;
 }
 
-.add-to-cart {
-    margin-top: 5px;
-    width: fit-content;
+.login-title {
+    color: white;
+    text-shadow: 3px 3px black;
 }
 
+.jumbotron {
+    border-style: groove;
+    border-width: 5px;
+    border-color: white;
+}
 
 .menuItem {
     height: 300px;
     width: 300px;
-    
+}
+
+.responsive-img {
+    position: relative;
+    margin: 0px;
+}
+
+.footer-text {
+    text-align: center;
 }
 
 .current {
-    width: fit-content;
+    width: 50%;
 }

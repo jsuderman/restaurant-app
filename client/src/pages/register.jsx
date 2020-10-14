@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {Link, useHistory} from "react-router-dom";
+import 'materialize-css';
+import { toast } from "materialize-css";
 import Axios from "axios";
 
 
@@ -32,6 +34,7 @@ function Register (){
             console.log(err);
           } else {
             history.push("/");
+            toast({html:"Login successful", classes:"green lighten-2"});
             console.log(res);
           }
 

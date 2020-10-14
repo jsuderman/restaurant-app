@@ -5,7 +5,6 @@ const passport = require("passport");
 
 passport.use(
   new localStratagy(
-
     {
       usernameField: "Email"
     },

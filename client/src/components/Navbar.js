@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link, useHistory } from "react-router-dom";
-import Axios from "axios";
 import "../app.css";
 
 const Navbar = () => {
@@ -16,10 +15,10 @@ const Navbar = () => {
       <div>
         <div id="background" className="view">
           <div className="full-lg-img">
-            <nav className="nav-extended">
+            <nav className="nav-extended purple darken-4 ">
               <div className="nav-wrapper">
-                <a href="#" className="brand-logo">ReservatioNow</a>
-                <a className="waves-effect waves-light btn" id="logOut" onClick={ logoutUser }>LogOut</a>
+                <a className="brand-logo">ReservatioNow</a>
+                <a href="/" className="waves-effect waves-light btn z-depth-3" id="logOut" onClick={ logoutUser }>LogOut</a>
               </div>
               <div className="nav-content">
                 <ul className="tabs tabs-transparent">

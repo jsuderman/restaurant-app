@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavbarComponent from "../components/Navbar";
 import FooterComponent from "../components/footer";
 import Axios from "axios"
+import { toast } from "materialize-css";
 import { useHistory } from "react-router-dom";
 
 
@@ -40,7 +41,7 @@ const Reservation = () => {
             sessionStorage.setItem("reserveSeating", res.data.Seating);
             sessionStorage.setItem("reserveOccupants", res.data.Occupants);
 
-
+            toast({html:"Reservation Placed", classes:"green lighten-2"});
             history.push("/user");
             console.log(res);
         });

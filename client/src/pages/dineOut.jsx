@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createElement } from "react";
 import NavbarComponent from "../components/Navbar";
 import FooterComponent from "../components/footer";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "materialize-css";
 import Axios from "axios";
 
 
@@ -39,7 +40,7 @@ const DineOut = () => {
             sessionStorage.setItem("order", res.data.Order);
             sessionStorage.setItem("total", res.data.Total);
 
-
+            toast({html:"Order Placed", classes:"green lighten-2"});
             history.push("/confirmation");
             console.log(res);
         })
@@ -52,6 +53,7 @@ const DineOut = () => {
 
         for (let i = 0; i < orders.length; i++) {
             total += parseFloat(orders[i].price.substring(1))
+
             displayOrder += orders[i].name + " " + orders[i].price + " "
         }
 

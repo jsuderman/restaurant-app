@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
-
 import Axios from "axios";
+import 'materialize-css';
+import { toast } from "materialize-css";
 
 //Storage 
 
@@ -22,7 +23,7 @@ function Login (props) {
       },
       withCredentials: true,
       url: "http://localhost:3001/api/login",
-    }).then((res) => {
+    }).then((res, err) => {
       if(res.data) {
         sessionStorage.setItem("loggedIn", true);
         sessionStorage.setItem("email", res.data.email);
@@ -31,6 +32,9 @@ function Login (props) {
         sessionStorage.setItem("auth", "true");
         props.setAuthenticated(true);
         history.push("/user");
+        toast({html:"Login successful", classes:"green lighten-2"});
+      } else if (err) {
+        toast({html:"Invalid Username and/or Password", classes:"red lighten-2"});
       }
     });
     }
@@ -53,9 +57,9 @@ function Login (props) {
 
   return (
     <div>
-      <div className="jumbotron">
+      <div className="jumbotron purple darken-4 z-depth-3">
         <div className="container">
-          <h1>ReservatioNow</h1>
+          <h1 className="login-title">ReservatioNow</h1>
         </div>
       </div>
 
@@ -78,6 +82,8 @@ function Login (props) {
         />
 
         <button className="btn waves-effect waves-light" type="submit" name="action" onClick={loginUser}> Log In </button>
+
+        
 
         <p>Don't have an account? Click <Link to="/register">here</Link> to sign up.</p>
       </form>

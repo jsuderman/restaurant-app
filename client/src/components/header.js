@@ -10,7 +10,7 @@ export default class HeaderComponent extends Component {
     return (
       <div className='row'>
         <div className='col s12 m6'>
-          <img className='responsive-img' src={bg} />
+          <img className='responsive-img' alt="header" src={bg} />
         </div>
         <div className='col s12 m6'>
           <h4 className='font'>
