@@ -17,7 +17,7 @@ const Landing = () => {
             <h3>Welcome {sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}</h3>
             <div className="row">
                 <div className="col s12 m6">
-                    <div className="card purple darken-4 current z-depth-5">
+                    <div className="card grey current z-depth-3">
                         <div className="card-content white-text">
                             <span className="card-title">Current Reservation</span>
                             <h5 className="card-headers">Name: {sessionStorage.getItem("reserveName")}</h5>
@@ -35,7 +35,7 @@ const Landing = () => {
 
             <div className="row">
                 <div className="col s12 m6">
-                    <div className="card purple darken-4 current z-depth-5">
+                    <div className="card grey current z-depth-3">
                         <div className="card-content white-text">
                             <span className="card-title">Current Order</span>
                             <h5 className="card-headers">Name: {sessionStorage.getItem("name")}</h5>
