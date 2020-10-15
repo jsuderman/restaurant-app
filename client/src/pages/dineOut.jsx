@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createElement } from "react";
+import React, { useState, useEffect } from "react";
 import NavbarComponent from "../components/Navbar";
 import FooterComponent from "../components/footer";
 import { Link, useHistory } from "react-router-dom";
@@ -16,9 +16,12 @@ const DineOut = () => {
     const [orderTotal, setOrderTotal] = useState("");
     const [displayOrder, setDisplayOrder] = useState("");
 
+    let orders = JSON.parse(sessionStorage.getItem("currentCart")) || [];
+
 
     const placeOrder = (e) => {
         e.preventDefault();
+
         Axios({
             method: "POST",
             url: "/api/dineOut",
@@ -40,20 +43,19 @@ const DineOut = () => {
             sessionStorage.setItem("order", res.data.Order);
             sessionStorage.setItem("total", res.data.Total);
 
-            toast({html:"Order Placed", classes:"green lighten-2"});
+            toast({ html: "Order Placed", classes: "green lighten-2" });
             history.push("/confirmation");
             console.log(res);
         })
     };
 
     useEffect(() => {
-        let orders = JSON.parse(sessionStorage.getItem("currentCart")) || [];
+
         let displayOrder = "";
         let total = 0;
 
         for (let i = 0; i < orders.length; i++) {
             total += parseFloat(orders[i].price.substring(1))
-
             displayOrder += orders[i].name + " " + orders[i].price + " "
         }
 
@@ -63,6 +65,10 @@ const DineOut = () => {
 
     })
 
+    function removeOrders() {
+        sessionStorage.removeItem("currentCart");
+        setDisplayOrder();
+    }
 
     return (
         <div>
@@ -89,8 +95,11 @@ const DineOut = () => {
                         </div>
 
                     </div>
-                    <h5>Order Items</h5>
-                    <p><Link to="/menu">See Menu</Link></p>
+                        <h5>Order Items</h5>
+                            <p><Link to="/menu">See Menu</Link></p>
+
+                    <button class='dropdown-trigger btn' onClick={removeOrders} >Remove Orders</button>
+
                     <div className="cell"><span className="label primary"></span>
                         <input id="orderItem" placeholder="Order Items will go here" type="text" onChange={(e) => setOrderItem(e.target.value)} value={displayOrder} />
 
